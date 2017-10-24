@@ -5,6 +5,7 @@ from subprocess import Popen, PIPE
 
 
 from .notifier import notifier
+from clint.textui import colored
 
 
 class SubprocessTestRunner(object):
@@ -37,12 +38,12 @@ class SubprocessTestRunner(object):
             self.handle_failure()
 
     def handle_success(self):
-        print('\nTests passed!\n')
+        print(getattr(colored, "green")('\nTests passed!\n'))
         notifier.success('OK TO TALK')
         self.sound_player.play_success()
 
     def handle_failure(self):
-        print('\nTests failed!\n')
+        print(getattr(colored, "red")('\nTests failed!\n'))
         notifier.fail('NOT OK TO TALK')
 
 

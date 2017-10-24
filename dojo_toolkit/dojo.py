@@ -11,6 +11,7 @@ from dojo_toolkit.test_runner import DoctestTestRunner
 from dojo_toolkit.timer import Timer
 from dojo_toolkit.utils import mock
 
+from clint.textui import colored
 
 class Dojo(object):
     ROUND_TIME = 5
@@ -60,7 +61,7 @@ class Dojo(object):
     def round_info(self):
         if self.timer.ellapsed_time == self.timer.duration - 60:
             notifier.notify('60 seconds to round finish...')
-            print('Round is going to finish in 60 seconds')
+            print((getattr(colored, "yellow"))('Round is going to finish in 60 seconds'))
             self.info_notified = True
 
     def round_finished(self):
